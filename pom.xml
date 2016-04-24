@@ -57,7 +57,7 @@
         <java.version>1.8</java.version>
         <scala.version>2.11.7</scala.version>
         <confluent.version>2.0.1</confluent.version>
-        <kafka.version>0.9.0.1</kafka.version>
+        <kafka.version>0.10.1.0-SNAPSHOT</kafka.version>
         <hosebird.version>2.2.0</hosebird.version>
         <avro.version>1.7.7</avro.version>
         <slf4j.version>1.7.13</slf4j.version>
@@ -66,16 +66,10 @@
         <scalatest.version>3.0.0-M1</scalatest.version>
         <guava.version>19.0</guava.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <confluent.maven.repo>http://packages.confluent.io/maven/</confluent.maven.repo>
         <cloudera.maven.repo>https://repository.cloudera.com/artifactory/cloudera-repos</cloudera.maven.repo>
     </properties>
 
     <repositories>
-        <repository>
-            <id>confluent</id>
-            <name>Confluent</name>
-            <url>${confluent.maven.repo}</url>
-        </repository>
         <repository>
             <id>cdh.repo</id>
             <name>Cloudera Repositories</name>

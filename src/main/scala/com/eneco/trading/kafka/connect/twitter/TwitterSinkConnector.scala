@@ -2,6 +2,7 @@ package com.eneco.trading.kafka.connect.twitter
 
 import java.util
 
+import org.apache.kafka.common.config.ConfigDef
 import org.apache.kafka.connect.connector.Task
 import org.apache.kafka.connect.errors.ConnectException
 import org.apache.kafka.connect.sink.SinkConnector
@@ -11,6 +12,7 @@ import scala.util.{Failure, Try}
 
 class TwitterSinkConnector extends SinkConnector with Logging {
   private var configProps : util.Map[String, String] = null
+  private val CONFIG_DEF : ConfigDef = new ConfigDef()
 
   /**
     * States which SinkTask class to use
@@ -40,6 +42,15 @@ class TwitterSinkConnector extends SinkConnector with Logging {
       case Failure(f) => throw new ConnectException("Couldn't start TwitterSinkConnector due to configuration error.", f)
       case _ =>
     }
+  }
+
+  /**
+    * Define the configuration for the connector.
+    *
+    * @return The ConfigDef for this connector.
+    */
+  override def config(): ConfigDef = {
+    CONFIG_DEF
   }
 
   override def stop(): Unit = {}

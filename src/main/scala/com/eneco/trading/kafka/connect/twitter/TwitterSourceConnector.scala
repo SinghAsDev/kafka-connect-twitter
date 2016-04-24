@@ -1,8 +1,11 @@
 package com.eneco.trading.kafka.connect.twitter
 
 import java.util
-import org.apache.kafka.connect.connector.{Task, Connector}
+
+import org.apache.kafka.common.config.ConfigDef
+import org.apache.kafka.connect.connector.{Connector, Task}
 import org.apache.kafka.connect.errors.ConnectException
+
 import scala.collection.JavaConverters._
 import scala.util.{Failure, Try}
 
@@ -12,6 +15,7 @@ import scala.util.{Failure, Try}
   */
 class TwitterSourceConnector extends Connector with Logging {
   private var configProps : util.Map[String, String] = null
+  private val CONFIG_DEF : ConfigDef = new ConfigDef()
 
   /**
     * States which SourceTask class to use
@@ -42,6 +46,15 @@ class TwitterSourceConnector extends Connector with Logging {
           + f.getMessage, f)
       case _ =>
     }
+  }
+
+  /**
+    * Define the configuration for the connector.
+    *
+    * @return The ConfigDef for this connector.
+    */
+  override def config(): ConfigDef = {
+    CONFIG_DEF
   }
 
   override def stop() = {}
